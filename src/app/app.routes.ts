@@ -30,6 +30,14 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'modulo-tres',
+    component: HomeComponent,
+    children:[
+      { path: '',  loadChildren: () => import('./modules/module-tres/module-tres-routing.module').then(m => m.ModuleTresRoutingModule)},
+    ]
+
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
