@@ -1,49 +1,84 @@
-<body class="hold-transition login-page">
-    <div class="login-box">
-      <!-- /.login-logo -->
-      <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-          <a href="#" class="h1">Angular Plantilla | Login</a>
-        </div>
-        <div class="card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
-    
-          <form action="#" method="post">
-            <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email" value="correo@gmail.com">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" value="123456789">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!-- /.col -->
-              <div class="col-12">
-                <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
-                <a href="/home" class="btn btn-primary btn-block">Sign In</a>
-              </div>
-              <!-- /.col -->
-            </div>
-          </form>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-    </div>
-    
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+		
+		.login-container {
+			width: 300px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #ffffff;
+			border: 1px solid #dddddd00;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgb(0, 0, 0);
+		}
+		
+		.login-header {
+			background-color: #333;
+			color: #ffffff;
+			padding: 10px;
+			text-align: center;
+			border-radius: 10px 10px 0 0;
+		}
+		
+		.login-form {
+			padding: 20px;
+		}
+		
+		.login-form input[type="text"], .login-form input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #faf8f8;
+		}
+		
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 10px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		
+		.login-form input[type="submit"]:hover {
+			background-color: #444;
+		}
+		
+		.avatar {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="login-container">
+		<div class="login-header">
+			<h2>LOGIN</h2>
+		</div>
+		<div class="login-form">
+			<img src="../../../../assets/dist/image/avatar.PNG" alt="avatar" class="avatar">
+			<form>
+				<input type="text" placeholder="Username" list="emails">
+				<datalist id="emails">
+					<option value="cbm0300451perez@gmail.com">
+					<option value="13353@utl.edu.mx">
+					<option value="example3@example.com">
+				</datalist>
+				<input type="password" placeholder="Password">
+				<input type="submit" value="Next">
+			</form>
+		</div>
+	</div>
 </body>
+</html>
+
+
