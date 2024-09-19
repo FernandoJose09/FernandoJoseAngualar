@@ -1,84 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<title>LOGIN</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f0f0f0;
-		}
-		
-		.login-container {
-			width: 300px;
-			margin: 50px auto;
-			padding: 20px;
-			background-color: #ffffff;
-			border: 1px solid #dddddd00;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgb(0, 0, 0);
-		}
-		
-		.login-header {
-			background-color: #333;
-			color: #ffffff;
-			padding: 10px;
-			text-align: center;
-			border-radius: 10px 10px 0 0;
-		}
-		
-		.login-form {
-			padding: 20px;
-		}
-		
-		.login-form input[type="text"], .login-form input[type="password"] {
-			width: 100%;
-			padding: 10px;
-			margin-bottom: 20px;
-			border: 1px solid #faf8f8;
-		}
-		
-		.login-form input[type="submit"] {
-			width: 100%;
-			padding: 10px;
-			background-color: #333;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-		
-		.login-form input[type="submit"]:hover {
-			background-color: #444;
-		}
-		
-		.avatar {
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			margin: 10px auto;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Celeste claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            width: 400px;
+            padding: 30px;
+            background-color: #ffffff; /* Blanco */
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .login-header {
+            background-color: #000000; /* Negro */
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            padding: 20px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #007bff; /* Celeste */
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #0056b3; /* Celeste oscuro */
+            outline: none;
+        }
+
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #000000; /* Negro */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.9s;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: #00ff00; /* Celeste */
+        }
+
+        .register-button {
+            background-color: #000000; /* Celeste */
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+            width: 100%;
+            transition: background-color 0.9s;
+        }
+
+        .register-button:hover {
+            background-color: #02ffff; /* Celeste oscuro */
+        }
+
+        .avatar {
+			width: 90px; /* Ajusta el tamaño según tus preferencias */
+            height: 90px; /* Ajusta el tamaño según tus preferencias */
+            border-radius: 100%;
+            margin: 10px auto; /* Centra la imagen */
+            display: block; /* Asegura que la imagen sea un bloque para centrarse */
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none; /* Oculta por defecto */
+        }
+    </style>
 </head>
 <body>
-	<div class="login-container">
-		<div class="login-header">
-			<h2>LOGIN</h2>
-		</div>
-		<div class="login-form">
-			<img src="../../../../assets/dist/image/avatar.PNG" alt="avatar" class="avatar">
-			<form>
-				<input type="text" placeholder="Username" list="emails">
-				<datalist id="emails">
-					<option value="cbm0300451perez@gmail.com">
-					<option value="13353@utl.edu.mx">
-					<option value="example3@example.com">
-				</datalist>
-				<input type="password" placeholder="Password">
-				<input type="submit" value="Next">
-			</form>
-		</div>
-	</div>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>LOGIN</h2>
+        </div>
+        <div class="login-form">
+            <img src="../../../../assets/dist/image/avatar.PNG" alt="avatar" class="avatar">
+            <form id="loginForm">
+                <input type="text" placeholder="Username" list="emails" required>
+                <datalist id="emails">
+                    <option value="cbm0300451perez@gmail.com">
+                    <option value="13353@utl.edu.mx">
+                    <option value="example3@example.com">
+                </datalist>
+                <input type="password" placeholder="Password" required>
+                <input type="submit" value="Continue">
+                <p class="error-message" id="errorMessage"></p>
+            </form>
+            <a href="register.html" class="register-button">Register</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.querySelector('input[type="text"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Validación básica (puedes personalizar)
+            if (username === 'admin' && password === 'password') {
+                alert('¡Bienvenido!');
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.textContent = 'Usuario o contraseña incorrectos.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
-
-
