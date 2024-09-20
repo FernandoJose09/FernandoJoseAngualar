@@ -1,1 +1,121 @@
-<p>registro works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            width: 400px;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .register-header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="password"],
+        .register-form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .register-form input[type="text"]:focus,
+        .register-form input[type="email"]:focus,
+        .register-form input[type="password"]:focus,
+        .register-form input[type="tel"]:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        .register-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.9s;
+        }
+
+        .register-form input[type="submit"]:hover {
+            background-color: #00ff00;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h2>Registro</h2>
+        </div>
+        <form id="registerForm" class="register-form">
+            <input type="text" id="firstName" placeholder="Nombre" required>
+            <input type="text" id="lastName" placeholder="Apellidos" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="tel" id="phone" placeholder="Número de teléfono" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <input type="submit" value="Registrar">
+            <p class="error-message" id="errorMessage"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Obtener los valores del formulario
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Validación simple (puedes personalizarla)
+            if (firstName && lastName && email && phone && password) {
+                alert(`Registro exitoso: \nNombre: ${firstName} \nApellidos: ${lastName} \nCorreo: ${email} \nTeléfono: ${phone}`);
+                errorMessage.style.display = 'none';
+                
+                // Aquí puedes redirigir a la página de login o guardar los datos
+                window.location.href = "login.html"; // Redirige a la página de login después del registro
+            } else {
+                errorMessage.textContent = 'Por favor, rellena todos los campos correctamente.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
